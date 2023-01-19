@@ -91,14 +91,24 @@ int Character::takeDamage(int damage)
 void Character::attackInternal(Character& other)
 {
     if( other.hitPoints <= 0 )
-    {
+    { 
+        //assert(false);
         /*
         When you defeat another Character: 
-            a) your stats are restored to their initial value if they are lower than it.
-            b) your stats are boosted 10%
-            c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character.
-      */
-        assert(false);
+            a) your stats are restored to their initial value if they are lower than it. 
+        */ 
+        if (hitPoints < *initialHitPoints) hitPoints = *initialHitPoints; 
+        if (armor < *initialArmorLevel) armor = *initialArmorLevel; 
+        if (attackDamage < *initialAttackDamage) attackDamage = *initialAttackDamage;
+        //b) your stats are boosted 10% 
+        hitPoints *= 1.1;
+        armor *= 1.1;
+        attackDamage *= 1.1;
+        //c) the initial value of your stats is updated to reflect this boosted stat for the next time you defeat another character. 
+        *initialHitPoints = hitPoints; 
+        *initialArmorLevel = armor; 
+        *initialAttackDamage = attackDamage;
+     
         std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
     }
 }
@@ -106,7 +116,7 @@ void Character::attackInternal(Character& other)
 void Character::printStats()
 {
     std::cout << getName() << "'s stats: " << std::endl;
-    assert(false);
+    //assert(false);
     /*
     make your getStats() use a function from the Utility.h
     */
@@ -114,4 +124,22 @@ void Character::printStats()
     
     std::cout << std::endl;
     std::cout << std::endl;
+}  
+
+void Character::boostArmor( int amount )
+{
+    armor += amount;
+    std::cout << getName() << "'s armor level has been boosted to " << armor << std::endl;
+} 
+
+void Character::boostHitPoints( int amount )
+{
+    hitPoints += amount;
+    std::cout << getName() << "'s hit point level has been boosted to " << hitPoints << std::endl;
+} 
+
+void Character::boostAttackDamage( int amount )
+{
+    attackDamage += amount;
+    std::cout << getName() << "'s attack damage level has been boosted to " << attackDamage << std::endl;
 }
