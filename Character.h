@@ -1,4 +1,4 @@
-#pragma once
+#pragma once 
 
 #include <string>
 #include <vector>
@@ -21,28 +21,24 @@ struct Character
     virtual const std::string& getName() = 0;
     virtual std::string getStats() = 0;
     
-    virtual void attack( Character& other );
-    void defend();
-    
-    void help( Character& other );
-    
     int takeDamage(int damage);
-    
     int getHP() const { return hitPoints; }
     int getArmorLevel() const { return armor; }
     int getAttackDamage() const { return attackDamage; }
     bool getIsDefending() const { return isDefending; }
-    
-    const std::vector<std::unique_ptr<Item>>& getHelpfulItems() const { return helpfulItems; }
-    const std::vector<std::unique_ptr<Item>>& getDefensiveItems() const { return defensiveItems; }
-    
+
+    virtual void attack( Character& other );
+    void defend();
+    void help( Character& other );
     void boostArmor( int amount );
     void boostHitPoints( int amount );
     void boostAttackDamage( int amount );
+    void printStats();  
 
-    void printStats(); 
+    const std::vector<std::unique_ptr<Item>>& getHelpfulItems() const { return helpfulItems; }
+    const std::vector<std::unique_ptr<Item>>& getDefensiveItems() const { return defensiveItems; }
 
-protected:
+protected:  
     std::vector<std::unique_ptr<Item>> defensiveItems;
     std::vector<std::unique_ptr<Item>> helpfulItems;
     int hitPoints, armor;
@@ -50,6 +46,5 @@ protected:
     bool isDefending = false;
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
-    
     void attackInternal(Character& other);
 };
