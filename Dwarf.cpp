@@ -1,7 +1,7 @@
 #include "Dwarf.h"
 
 //Dwarf::Dwarf
-Dwarf::Dwarf(std::string name, int hp, int armor) : Character(hp, armor, 4), name(name)
+Dwarf::Dwarf(std::string nameInit, int hpInit, int armorInit) : Character(hpInit, armorInit, 4), name(nameInit)
 {
     helpfulItems = makeHelpfulItems(2);
     defensiveItems = makeDefensiveItems(5); 

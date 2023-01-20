@@ -1,7 +1,7 @@
 #include "Paladin.h"
 
 //Paladin::Paladin
-Paladin::Paladin(std::string name, int hp, int armor) : Character(hp, armor, 10), name(name)
+Paladin::Paladin(std::string nameInit, int hpInit, int armorInit) : Character(hpInit, armorInit, 10), name(nameInit)
 {
     helpfulItems = makeHelpfulItems(2);
     defensiveItems = makeDefensiveItems(6); 
