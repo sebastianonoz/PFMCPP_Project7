@@ -1,4 +1,4 @@
-#include "HelpfulItem.h"; 
+#include "HelpfulItem.h"
 
 HelpfulItem::HelpfulItem() : Item("helpful item", 2)
 {
