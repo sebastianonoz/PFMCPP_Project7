@@ -86,13 +86,6 @@ int Character::takeDamage(int damage)
     return hitPoints;
 }
 
-void Character::leveledUp(int& currentStatValue, int& initialStatValue)
-{
-    if (currentStatValue < initialStatValue) currentStatValue = initialStatValue;   
-    currentStatValue *= 1.1; 
-    initialStatValue = currentStatValue;
-}
-
 #include <cassert>
 void Character::attackInternal(Character& other)
 {
@@ -142,4 +135,11 @@ void Character::boostAttackDamage( int amount )
 {
     attackDamage += amount;
     std::cout << getName() << "'s attack damage level has been boosted to " << attackDamage << std::endl;
+}
+
+void leveledUp(int& currentStatValue, int& initialStatValue)
+{
+    if (currentStatValue < initialStatValue) currentStatValue = initialStatValue;   
+    currentStatValue *= 1.1; 
+    initialStatValue = currentStatValue;
 }

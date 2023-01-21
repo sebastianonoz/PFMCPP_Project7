@@ -38,8 +38,6 @@ struct Character
     const std::vector<std::unique_ptr<Item>>& getHelpfulItems() const { return helpfulItems; }
     const std::vector<std::unique_ptr<Item>>& getDefensiveItems() const { return defensiveItems; }
 
-    void leveledUp(int& currentStatValue, int& initialStatValue);
-
 protected:  
     std::vector<std::unique_ptr<Item>> defensiveItems;
     std::vector<std::unique_ptr<Item>> helpfulItems;
@@ -50,3 +48,5 @@ private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
     void attackInternal(Character& other);
 };
+
+void leveledUp(int& currentStatValue, int& initialStatValue); 
