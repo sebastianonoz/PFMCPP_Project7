@@ -5,7 +5,7 @@
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
 
-Character::Character(int hp, int armor_, int attackDamage_) :
+Character::Character(int hp_, int armor_, int attackDamage_) :
     hitPoints(hp),
     armor(armor_),
     attackDamage(attackDamage_)
