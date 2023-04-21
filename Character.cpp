@@ -6,7 +6,7 @@
 #include "HelpfulItem.h"
 
 Character::Character(int hp_, int armor_, int attackDamage_) :
-    hitPoints(hp),
+    hitPoints(hp_),
     armor(armor_),
     attackDamage(attackDamage_)
 {
